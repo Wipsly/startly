@@ -18,5 +18,9 @@ Route::get('/', function () {
 Route::auth();
 
 Route::group(['middleware' => ['auth', 'tenant']], function () {
-    Route::get("/home", "HomeController@index");        
-    });
+    Route::get("/home", "HomeController@index");
+
+    Route::get('/admin', function () {
+    	return view('admin.home');
+	});        
+});
