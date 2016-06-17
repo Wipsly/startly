@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use App\Company;
-use App\User;
 
 class AuthController extends Controller
 {
@@ -52,7 +51,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'company' => 'required|max:255|unique:companies',
+            'company' => 'required|max:255|unique:companies,name',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
@@ -80,12 +79,5 @@ class AuthController extends Controller
         $company->users()->save($user);
 
         return $user;
-
-
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
     }
 }

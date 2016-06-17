@@ -11,6 +11,7 @@
                     You are logged in! 
                     @foreach ($users as $user)
                         <p>This is user {{ $user->name }}</p>
+                        <p>{{$user->company->name}}</p>
                     @endforeach
                 </div>
             </div>
