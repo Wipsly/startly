@@ -22,19 +22,31 @@ class UsersTableSeeder extends Seeder
              	'password'		=> bcrypt('password'),
              	'company_id'	=> 1
              	),
-             array(
+			array(
              	'name'			=> 'Marcel Klaes',
              	'email' 		=> 'marcel.klaes@computech-oberhausen.de',
              	'password'		=> bcrypt('password'),
              	'company_id'	=> 1
              	),
-             array(
+			array(
+				'name'			=> 'Udo Linden',
+				'email' 		=> 'udo.linden@computech-oberhausen.de',
+				'password'		=> bcrypt('password'),
+				'company_id'	=> 1
+				),
+			array(
+				'name'			=> 'Barbara Linden',
+				'email' 		=> 'barbara.linden@computech-oberhausen.de',
+				'password'		=> bcrypt('password'),
+				'company_id'	=> 1
+				),
+            array(
              	'name'			=> 'Alisa Hellmann',
              	'email' 		=> 'alisa.hellmann@ihk.de',
              	'password'		=> bcrypt('password'),
              	'company_id'	=> 2
              	),
-             array(
+            array(
              	'name'			=> 'Michael Ruescher',
              	'email' 		=> 'michael.ruescher@ihk.de',
              	'password'		=> bcrypt('password'),

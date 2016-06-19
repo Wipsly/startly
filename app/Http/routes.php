@@ -18,9 +18,13 @@ Route::get('/', function () {
 Route::auth();
 
 Route::group(['middleware' => ['auth', 'tenant']], function () {
-    Route::get("/home", "HomeController@index");
+    Route::get('/home', 'HomeController@index');
+    Route::get('/admin', 'Admin\UserController@index');
+    Route::get('/admin/users/{id}', 'Admin\UserController@show');
+    Route::get('/admin/users/{id}/edit', 'Admin\UserController@edit');
 
-    Route::get('/admin', function () {
-    	return view('admin.home');
-	});        
+    // API Calls
+    Route::get('admin/fetchUsers', 'Admin\UserController@fetchUsers');
+    Route::get('admin/fetchUser/{id}', 'Admin\UserController@fetchUser');
+    Route::patch('admin/updateUser/{id}', 'Admin\UserController@updateUser');
 });
