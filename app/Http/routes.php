@@ -1,30 +1,26 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
+// Landing Page
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentification
 Route::auth();
 
 Route::group(['middleware' => ['auth', 'tenant']], function () {
+    // Home | After Login
     Route::get('/home', 'HomeController@index');
-    Route::get('/admin', 'Admin\UserController@index');
+
+    // Administration
+    Route::get('/admin', 'Admin\UserController@home');
+    Route::get('/admin/users/create', 'Admin\UserController@create');
+    Route::post('admin/users', 'Admin\UserController@store');
     Route::get('/admin/users/{id}', 'Admin\UserController@show');
     Route::get('/admin/users/{id}/edit', 'Admin\UserController@edit');
+    Route::delete('/admin/users/{id}/delete', 'Admin\UserController@destroy');
 
-    // API Calls
+
+    // Vue JS Calls
     Route::get('admin/fetchUsers', 'Admin\UserController@fetchUsers');
-    Route::get('admin/fetchUser/{id}', 'Admin\UserController@fetchUser');
-    Route::patch('admin/updateUser/{id}', 'Admin\UserController@updateUser');
 });

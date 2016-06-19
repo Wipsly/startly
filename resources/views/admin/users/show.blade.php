@@ -16,32 +16,14 @@
             <div class="col-md-10">
                 <div id="vue-app">
                 <div class="panel panel-default">
-                    <div class="panel-heading">@{{ user.name }}</div>
+                    <div class="panel-heading">{{ $user->name }}</div>
                     <div class="panel-body">
-
+                        Member since {{ $user->created_at }}
                     </div>
                 </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
-
-    <script>
-        new Vue({
-            el: '#vue-app',
-            data: {
-                user: []
-            },
-            ready: function() {
-                var user_id = '{{ $user->id }}';
-                this.$http({url: '/admin/fetchUser/'+user_id, method: 'GET'}).then(function (response) {
-                    this.$set('user', response.data)
-                })
-            }
-        });
-    </script>
 @endsection
 

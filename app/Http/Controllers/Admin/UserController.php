@@ -11,104 +11,60 @@ use App\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function home()
     {
         return view('admin.home');
     }
 
-    /**
-     * API Call -> fetch all Users and include Company relation
-     *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
-     */
     public function fetchUsers()
     {
         $users = User::with('company')->get();
         return $users;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required|max:255',
+            'email' => 'required|email|max:255'
+        ]);
+
+        $user = New User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt(\Passworder::gen());
+        $user->save();
+
+        return redirect('/admin');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::findOrFail($id);
         return view('admin.users.show', compact('user'));
     }
 
-    /**
-     * API Call -> fetch the user by ID
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function fetchUser($id)
-    {
-        $user = User::findOrFail($id);
-        return $user;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateUser(Request $request, $id)
     {
-        dd($id);
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        redirect('/admin');
     }
 }

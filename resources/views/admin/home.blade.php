@@ -20,7 +20,10 @@
                 <div class="panel-body">
                     <div id="vue-app">
                         <div class="row">
-                            <div class="col-md-3 col-md-offset-9">
+                            <div class="col-md-3">
+                                <a href="{{ url('admin/users/create') }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+                            </div>
+                            <div class="col-md-3 col-md-offset-6">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -45,7 +48,14 @@
                                         <div class="btn-group btn-group-sm">
                                             <a href="{{url('admin/users')}}/@{{ user.id }}" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{url('admin/users')}}/@{{ user.id }}/edit" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <!-- Delete Button -->
+                                            <form action="{{url('admin/users')}}/@{{ user.id }}/delete" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-btn fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -62,20 +72,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.8.0/vue-resource.js"></script>
 
 <script>
-    // app.js
-
     new Vue({
-
-// We want to target the div with an id of 'events'
         el: '#vue-app',
-
-// Here we can register any values or collections that hold data
-// for the application
         data: {
             users: []
         },
-
-// Anything within the ready function will run when the application loads
         ready: function() {
             // GET request
             this.$http({url: '/admin/fetchUsers', method: 'GET'}).then(function (response) {

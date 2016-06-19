@@ -16,9 +16,10 @@
             <div class="col-md-10">
                 <div id="vue-app">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $user->name }}</div>
+                        <div class="panel-heading">Add User</div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form">
+                            <form action="{{ url('admin/users') }}" method="POST" class="form-horizontal">
+                                {{ csrf_field() }}
                                 <!-- Name -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Name</label>
@@ -37,7 +38,7 @@
                                 <div class="form-group">
                                     <div class="col-md-offset-4 col-md-6">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-refresh" aria-hidden="true"></i> Update
+                                            <i class="fa fa-user-plus" aria-hidden="true"></i> Add User
                                         </button>
                                     </div>
                                 </div>

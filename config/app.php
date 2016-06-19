@@ -158,6 +158,7 @@ return [
 
         HipsterJazzbo\Landlord\LandlordServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Ircop\Passworder\PassworderServiceProvider::class,
 
     ],
 
@@ -207,6 +208,7 @@ return [
 
         'Landlord'   => HipsterJazzbo\Landlord\Facades\LandlordFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Passworder' => Ircop\Passworder\Facade\Passworder::class,
 
     ],
 
