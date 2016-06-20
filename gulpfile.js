@@ -14,6 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.less([
         'bootstrap-flat.less',
-        'bootstrap-flat-extras.less'
+        'bootstrap-flat-extras.less',
+        'custom.less'
     ]);
 });

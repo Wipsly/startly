@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1f027a92873c66e80d9270287e88da7",
-    "content-hash": "ad2f1388670dde8dba94adde1b0b7fc2",
+    "hash": "d6d8eb6c422e0f5939ca2d06907f8d9b",
+    "content-hash": "ca472de6ca95f3c5a0e28517d48557d2",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -262,6 +262,44 @@
                 "tenant"
             ],
             "time": "2016-01-18 21:17:32"
+        },
+        {
+            "name": "ircop/passworder",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircop/passworder.git",
+                "reference": "b36cd9665c67cea72bc37b2152ee6fffe6a42e26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircop/passworder/zipball/b36cd9665c67cea72bc37b2152ee6fffe6a42e26",
+                "reference": "b36cd9665c67cea72bc37b2152ee6fffe6a42e26",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ircop\\Passworder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "wingman",
+                    "email": "wingman@ip-home.net"
+                }
+            ],
+            "description": "Human-readable password generator",
+            "keywords": [
+                "laravel",
+                "password",
+                "password generator"
+            ],
+            "time": "2015-11-12 18:04:22"
         },
         {
             "name": "jakub-onderka/php-console-color",

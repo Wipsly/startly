@@ -1492,4 +1492,13 @@ blockquote.testimonial footer cite {
   margin-left: -32px;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #636b6f;
+}
+.panel-nav .panel-body,
+.panel-nav .panel-header {
+  padding: 0;
+}
+
 /*# sourceMappingURL=app.css.map */
