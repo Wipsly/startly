@@ -57,7 +57,17 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id)
     {
+        $this->validate($request, [
+            'name'  => 'required|max:255',
+            'email' => 'required|email|max:255'
+        ]);
 
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect('/admin');
     }
 
     public function destroy($id)
@@ -65,6 +75,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        redirect('/admin');
+        return redirect('/admin');
     }
 }

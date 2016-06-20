@@ -16,9 +16,11 @@ Route::group(['middleware' => ['auth', 'tenant']], function () {
     Route::get('/admin', 'Admin\UserController@home');
     Route::get('/admin/users/create', 'Admin\UserController@create');
     Route::post('admin/users', 'Admin\UserController@store');
+    Route::put('/admin/users/{id}', 'Admin\UserController@updateUser');
     Route::get('/admin/users/{id}', 'Admin\UserController@show');
     Route::get('/admin/users/{id}/edit', 'Admin\UserController@edit');
-    Route::delete('/admin/users/{id}/delete', 'Admin\UserController@destroy');
+    Route::delete('/admin/users/{id}', 'Admin\UserController@destroy');
+    
 
 
     // Vue JS Calls

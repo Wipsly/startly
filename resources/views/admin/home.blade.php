@@ -49,7 +49,7 @@
                                             <a href="{{url('admin/users')}}/@{{ user.id }}" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{url('admin/users')}}/@{{ user.id }}/edit" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             <!-- Delete Button -->
-                                            <form action="{{url('admin/users')}}/@{{ user.id }}/delete" method="POST" class="btn-group btn-group-sm">
+                                            <form action="{{url('admin/users')}}/@{{ user.id }}" method="POST" class="btn-group btn-group-sm">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-danger">
@@ -75,7 +75,8 @@
     new Vue({
         el: '#vue-app',
         data: {
-            users: []
+            users: [],
+            query: ''
         },
         ready: function() {
             // GET request

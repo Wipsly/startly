@@ -21,17 +21,27 @@
                             <form action="{{ url('admin/users') }}" method="POST" class="form-horizontal">
                                 {{ csrf_field() }}
                                 <!-- Name -->
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label class="col-md-4 control-label">Name</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" name="name">
+                                         @if ($errors->has('name'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                         </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <!-- E-Mail Address -->
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label class="col-md-4 control-label">E-Mail Address</label>
                                     <div class="col-md-6">
                                         <input type="email" class="form-control" name="email">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                         </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <!-- Update Button -->
