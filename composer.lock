@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6d8eb6c422e0f5939ca2d06907f8d9b",
-    "content-hash": "ca472de6ca95f3c5a0e28517d48557d2",
+    "hash": "c30ffe493d9bf683a2a27040cd02223e",
+    "content-hash": "407bf8fd2b10957fd335bb6acb52ddad",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -60,6 +60,56 @@
                 "webprofiler"
             ],
             "time": "2016-05-11 13:54:43"
+        },
+        {
+            "name": "caffeinated/flash",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caffeinated/flash.git",
+                "reference": "92be353171a44297513f42418553fea7638cc5a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caffeinated/flash/zipball/92be353171a44297513f42418553fea7638cc5a9",
+                "reference": "92be353171a44297513f42418553fea7638cc5a9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Caffeinated\\Flash\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shea Lewis",
+                    "email": "shea.lewis89@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Flash Messages",
+            "keywords": [
+                "caffeinated",
+                "flash",
+                "laravel"
+            ],
+            "time": "2016-02-25 23:37:16"
         },
         {
             "name": "classpreloader/classpreloader",

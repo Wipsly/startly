@@ -18,6 +18,7 @@
                 <div class="panel-heading">Users</div>
 
                 <div class="panel-body">
+                    @include('flash::message')
                     <div id="vue-app">
                         <div class="row">
                             <div class="col-md-3">

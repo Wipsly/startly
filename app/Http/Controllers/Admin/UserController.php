@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use Flash;
 
 class UserController extends Controller
 {
@@ -40,6 +41,7 @@ class UserController extends Controller
         $user->password = bcrypt(\Passworder::gen());
         $user->save();
 
+        Flash::success('User ' .$user->name. ' has been created.');
         return redirect('/admin');
     }
 
