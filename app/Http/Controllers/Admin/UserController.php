@@ -41,7 +41,7 @@ class UserController extends Controller
         $user->password = bcrypt(\Passworder::gen());
         $user->save();
 
-        Flash::success('User ' .$user->name. ' has been created.');
+        Flash::success($user->name. ' has been created.');
         return redirect('/admin');
     }
 
@@ -60,8 +60,8 @@ class UserController extends Controller
     public function updateUser(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required|max:255',
-            'email' => 'required|email|max:255'
+            'name'  => 'required|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users'
         ]);
 
         $user = User::findOrFail($id);
@@ -77,6 +77,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
+        Flash::info($user->name. ' has been deleted.');
         return redirect('/admin');
     }
 }

@@ -37,14 +37,14 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Company</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="user in users | filterBy query in 'name'">
                                     <td>@{{ user.name }}</td>
-                                    <td>@{{ user.company.name }}</td>
+                                    <td>@{{ user.email }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="{{url('admin/users')}}/@{{ user.id }}" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
