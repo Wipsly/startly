@@ -50,7 +50,7 @@
                                             <a href="{{url('admin/users')}}/@{{ user.id }}" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{url('admin/users')}}/@{{ user.id }}/edit" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             <!-- Delete Button -->
-                                            <form action="{{url('admin/users')}}/@{{ user.id }}" method="POST" class="btn-group btn-group-sm">
+                                            <form action="{{url('admin/users')}}/@{{ user.id }}" method="POST" class="btn-group btn-group-sm" id="delete">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-danger">
@@ -86,6 +86,22 @@
             })
         }
     });
+</script>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/bootbox/4.4.0/bootbox.min.js"></script>
+<script>
+    $('#delete').submit(function(e) {
+        var currentForm = this;
+        e.preventDefault();
+        bootbox.confirm("Are you sure?", function(result) {
+            if (result) {
+                currentForm.submit();
+            }
+        });
+    });
+</script>
 </script>
 @endsection
 
