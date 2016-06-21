@@ -59,16 +59,18 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id)
     {
+        $user = User::findOrFail($id);
+
         $this->validate($request, [
-            'name'  => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users'
+            'name'  => 'required|max:255',
+            'email' => 'required|unique:users,email,'.$user->id
         ]);
 
-        $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
 
+        Flash::info($user->name. ' has been updated.');
         return redirect('/admin');
     }
 
